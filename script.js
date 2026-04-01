@@ -1,8 +1,8 @@
 const content = {
   en: {
     eyebrow: "100% Fresh and Hygienic",
-    brandName: "Rudraa Chaat",
-    title: "Rudraa Chaat Center",
+    brandName: "RUDRAA-CHAT-CENTER-KAMERI",
+    title: "RUDRAA-CHAT-CENTER-KAMERI",
     tagline: "The Taste of Hygiene",
     chaat: "Chaat and Snacks",
     drinks: "Beverages",
@@ -26,8 +26,8 @@ const content = {
   },
   mr: {
     eyebrow: "100% ताजे आणि स्वच्छ",
-    brandName: "रुद्रा चाट",
-    title: "रुद्रा चाट सेंटर",
+    brandName: "RUDRAA-CHAT-CENTER-KAMERI",
+    title: "RUDRAA-CHAT-CENTER-KAMERI",
     tagline: "स्वच्छतेची चव",
     chaat: "चाट आणि स्नॅक्स",
     drinks: "पेय",
