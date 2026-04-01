@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rudraa Chaat Center digital menu card with English and Marathi support.">
+  <meta name="theme-color" content="#0fba95">
   <title>Rudraa Chaat Center | Menu Card</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +27,8 @@
     <p id="tagline">The Taste of Hygiene</p>
 
     <div class="lang-toggle" role="group" aria-label="Language Selector">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
-      <button class="lang-btn" id="btn-mr" onclick="setLang('mr')">मराठी</button>
+      <button class="lang-btn active" id="btn-en" data-lang="en" type="button">English</button>
+      <button class="lang-btn" id="btn-mr" data-lang="mr" type="button">मराठी</button>
     </div>
   </header>
 
@@ -38,62 +40,62 @@
 
     <div class="grid">
       <article class="card">
-        <img src="https://source.unsplash.com/800x600/?bhel-puri&sig=1" alt="Bhel" loading="lazy">
+        <img id="img-bhel" src="https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Bhel" loading="lazy">
         <div class="info">
           <h3 id="bhel">Bhel</h3>
           <p class="name-mr">भेळ</p>
           <p class="desc" id="bhel-desc">Crispy mix with chutneys and fresh veggies</p>
-          <p class="price">₹30</p>
+          <p class="price" id="bhel-price">₹30</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://source.unsplash.com/800x600/?pani-puri&sig=2" alt="Pani Puri" loading="lazy">
+        <img id="img-panipuri" src="https://images.pexels.com/photos/1893555/pexels-photo-1893555.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Pani Puri" loading="lazy">
         <div class="info">
           <h3 id="panipuri">Pani Puri</h3>
           <p class="name-mr">पाणीपुरी</p>
           <p class="desc" id="panipuri-desc">Tangy water shots with masala filling</p>
-          <p class="price">₹30</p>
+          <p class="price" id="panipuri-price">₹30</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://source.unsplash.com/800x600/?dabeli,street-food&sig=3" alt="Dabeli" loading="lazy">
+        <img id="img-dabeli" src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Dabeli" loading="lazy">
         <div class="info">
           <h3 id="dabeli">Dabeli</h3>
           <p class="name-mr">दाबेली</p>
           <p class="desc" id="dabeli-desc">Spiced potato bun with peanuts and pomegranate</p>
-          <p class="price">₹30</p>
+          <p class="price" id="dabeli-price">₹30</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://source.unsplash.com/800x600/?sev-puri,chaat&sig=4" alt="Sev Puri" loading="lazy">
+        <img id="img-sevpuri" src="https://images.pexels.com/photos/1435895/pexels-photo-1435895.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Sev Puri" loading="lazy">
         <div class="info">
           <h3 id="sevpuri">Sev Puri</h3>
           <p class="name-mr">शेवपुरी</p>
           <p class="desc" id="sevpuri-desc">Crunchy puris topped with sev and chutneys</p>
-          <p class="price">₹40</p>
+          <p class="price" id="sevpuri-price">₹40</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://source.unsplash.com/800x600/?dahi-puri,chaat&sig=5" alt="Dahi Puri" loading="lazy">
+        <img id="img-dahipuri" src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Dahi Puri" loading="lazy">
         <div class="info">
           <h3 id="dahipuri">Dahi Puri</h3>
           <p class="name-mr">दहीपुरी</p>
           <p class="desc" id="dahipuri-desc">Cool curd topping with sweet and spicy flavor</p>
-          <p class="price">₹40</p>
+          <p class="price" id="dahipuri-price">₹40</p>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://source.unsplash.com/800x600/?ragda-pattice,indian-food&sig=6" alt="Ragda" loading="lazy">
+        <img id="img-ragda" src="https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Ragda" loading="lazy">
         <div class="info">
           <h3 id="ragda">Ragda</h3>
           <p class="name-mr">रगडा</p>
           <p class="desc" id="ragda-desc">Warm white pea curry with signature spices</p>
-          <p class="price">₹50</p>
+          <p class="price" id="ragda-price">₹50</p>
         </div>
       </article>
     </div>
@@ -107,12 +109,12 @@
 
     <div class="grid one-item">
       <article class="card">
-        <img src="https://source.unsplash.com/800x600/?sugarcane-juice&sig=7" alt="Sugarcane Juice" loading="lazy">
+        <img id="img-juice" src="https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Sugarcane Juice" loading="lazy">
         <div class="info">
           <h3 id="juice">Sugarcane Juice</h3>
           <p class="name-mr">उसाचा रस</p>
           <p class="desc" id="juice-desc">Cold pressed cane juice served chilled</p>
-          <p class="price">₹30</p>
+          <p class="price" id="juice-price">₹30</p>
         </div>
       </article>
     </div>
@@ -127,7 +129,7 @@
   <p>📧 <a href="mailto:mrpranavpatil11@gmail.com">mrpranavpatil11@gmail.com</a></p>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 
 </body>
 </html>

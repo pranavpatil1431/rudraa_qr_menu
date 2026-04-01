@@ -83,3 +83,80 @@ function setLang(lang) {
   document.getElementById("btn-en").classList.toggle("active", lang === "en");
   document.getElementById("btn-mr").classList.toggle("active", lang === "mr");
 }
+
+const imageSearchMap = [
+  { id: "img-bhel", query: "Bhel puri" },
+  { id: "img-panipuri", query: "Pani puri" },
+  { id: "img-dabeli", query: "Dabeli" },
+  { id: "img-sevpuri", query: "Sev puri" },
+  { id: "img-dahipuri", query: "Dahi puri" },
+  { id: "img-ragda", query: "Ragda patties" },
+  { id: "img-juice", query: "Sugarcane juice" }
+];
+
+const fallbackImageMap = {
+  "img-bhel": "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "img-panipuri": "https://images.pexels.com/photos/1893555/pexels-photo-1893555.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "img-dabeli": "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "img-sevpuri": "https://images.pexels.com/photos/1435895/pexels-photo-1435895.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "img-dahipuri": "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "img-ragda": "https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  "img-juice": "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=1600"
+};
+
+async function fetchWikipediaImage(searchTerm) {
+  const url = "https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch="
+    + encodeURIComponent(searchTerm)
+    + "&gsrlimit=1&prop=pageimages&piprop=thumbnail&pithumbsize=1200&format=json&origin=*";
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    return null;
+  }
+
+  const data = await response.json();
+  const pages = data?.query?.pages;
+  if (!pages) {
+    return null;
+  }
+
+  const firstPage = Object.values(pages)[0];
+  return firstPage?.thumbnail?.source || null;
+}
+
+async function loadMenuImagesFromInternet() {
+  const jobs = imageSearchMap.map(async ({ id, query }) => {
+    const img = document.getElementById(id);
+    if (!img) {
+      return;
+    }
+
+    try {
+      const resultUrl = await fetchWikipediaImage(query);
+      if (resultUrl) {
+        img.src = resultUrl;
+      } else {
+        img.src = fallbackImageMap[id];
+      }
+    } catch (error) {
+      img.src = fallbackImageMap[id];
+    }
+
+    img.addEventListener("error", () => {
+      img.src = fallbackImageMap[id];
+    }, { once: true });
+  });
+
+  await Promise.all(jobs);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".lang-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      setLang(button.dataset.lang);
+    });
+  });
+
+  setLang("en");
+  loadMenuImagesFromInternet();
+});
